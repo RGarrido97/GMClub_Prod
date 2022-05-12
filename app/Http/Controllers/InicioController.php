@@ -90,8 +90,15 @@ class InicioController extends Controller
     public function correointerno(){
         $usuario=User::find(Auth::id());
         $a=$usuario->id_club;
-        $blog=Blog::where('id_club','=',$a)->orderBy('created_at','ASC')->get();
+        $blog=Blog::where('id_club','=',$a)->where('tipo','=','junta')->orderBy('created_at','DESC')->get();
         return view('correointerno', compact('blog'));
+    }
+
+    public function blogentrenador(){
+        $usuario=User::find(Auth::id());
+        $a=$usuario->id_club;
+        $blog=Blog::where('id_club','=',$a)->where('tipo','=','entrenador')->orderBy('created_at','DESC')->get();
+        return view('blogentrenador', compact('blog'));
     }
 
     static function devolverUser($a){
@@ -111,9 +118,24 @@ class InicioController extends Controller
             'id_user' => User::find(Auth::id())->id,
             'id_club'  => User::find(Auth::id())->id_club,
             'titulo'   => $request->titulo,
-            'contenido' =>$request->comentarios
+            'contenido' =>$request->comentarios,
+            'tipo' =>'junta'
          ]);
         return route('correointerno');
+    }
+
+    //crearentradamister
+    public function crearentradamister(Request $request){
+
+
+        $add = Blog::create([
+            'id_user' => User::find(Auth::id())->id,
+            'id_club'  => User::find(Auth::id())->id_club,
+            'titulo'   => $request->titulo,
+            'contenido' =>$request->comentarios,
+            'tipo' =>'entrenador'
+         ]);
+        return route('blogentrenador');
     }
 
     public function editar_usuario(User $user){
@@ -122,5 +144,12 @@ class InicioController extends Controller
             'usuario' => $user
         ]);
 
+    }
+    //crearentrenador
+    public function crearentrenador(){
+        $usuario=User::find(Auth::id());
+        $a=$usuario->id_club;
+        $id=User::find(Auth::id())->where('id_club','=',$a)->where('rol','=','Entrenador')->get();
+        return view('crearentrenador', compact('id'));
     }
 }

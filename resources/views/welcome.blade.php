@@ -45,8 +45,8 @@
             <div class="bg-circle-4 bg-circle"></div>
         </header>
         <!-- Content section 1-->
-        <section id="scroll">
-            <div class="container px-5">
+        <section id="scroll" style="background-color: rgb(209, 208, 208)">
+            <div class="container px-5" >
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6 order-lg-2">
                         <div class="p-5"><img class="img-fluid rounded-circle" src="{{ asset('assets/undraw_speech_to_text_re_8mtf.svg') }}" alt="..." /></div>
@@ -77,9 +77,9 @@
             </div>
         </section>
         <!-- Content section 3-->
-        <section>
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center">
+        <section style="background-color: rgb(209, 208, 208)">
+            <div class="container px-5" >
+                <div class="row gx-5 align-items-center" >
                     <div class="col-lg-6 order-lg-2">
                         <div class="p-5"><img class="img-fluid rounded-circle" src="{{ asset('assets/undraw_fans_re_cri3.svg') }}" alt="..." /></div>
                     </div>

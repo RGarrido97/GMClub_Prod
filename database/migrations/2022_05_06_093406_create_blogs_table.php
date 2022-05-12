@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('id_club')->references('id')->on('clubs')->onDelete('cascade');
             $table->string('titulo');
             $table->string('contenido');
+            $table->string('tipo');
             $table->timestamps();
         });
     }

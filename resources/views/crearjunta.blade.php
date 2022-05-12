@@ -1,7 +1,7 @@
 @extends('plantilla')
 
 @section('header')
-    <h1>Crear Usuarios de la Junta Directiva</h1>
+    <h1>Crear Usuarios del Club</h1>
 @endsection
 @section('content')
     <form action="{{route('crearusuariojunta')}}" method="post">
@@ -32,7 +32,6 @@
                     <option  value="Vocal">Vocal</option>
                     <option  value="Director Deportivo">Director Deportivo</option>
                     <option value="Coordinador">Coordinador</option>
-                    <option value="Entrenador">Entrenador</option>
                 </select>
             </div>
             
@@ -99,17 +98,30 @@
         </thead>
         <tbody>
             @foreach($id as $user)
-            <tr>
-                <td style="text-align: center">{{$user->name}}</td> 
-                <td style="text-align: center">{{$user->apellidos}}</td>
-                <td style="text-align: center">{{$user->email}}</td>
-                <td style="text-align: center">{{$user->rol}}</td>
-                <td style="text-align: center"><a href="{{route('editar_usuario',$user)}}" class="btn btn-outline-success">Editar</a></td>
-                <td style="text-align: center"><form action="{{route('eliminarusario',$user)}}" method="post">
-                    @csrf @method('DELETE')
-                    <input type="submit" class="btn btn-outline-danger" value="Eliminar">
-                </form></td>
-            </tr>
+            
+                @if ($user->rol == "Presidente")
+                    <tr>
+                        <td style="text-align: center">{{$user->name}}</td> 
+                        <td style="text-align: center">{{$user->apellidos}}</td>
+                        <td style="text-align: center">{{$user->email}}</td>
+                        <td style="text-align: center">{{$user->rol}}</td>
+                        <td style="text-align: center"></td>
+                        <td style="text-align: center"></td>
+                    </tr>
+                @else
+                    <tr>
+                        <td style="text-align: center">{{$user->name}}</td> 
+                        <td style="text-align: center">{{$user->apellidos}}</td>
+                        <td style="text-align: center">{{$user->email}}</td>
+                        <td style="text-align: center">{{$user->rol}}</td>
+                        <td style="text-align: center"><a href="{{route('editar_usuario',$user)}}" class="btn btn-outline-success">Editar</a></td>
+                        <td style="text-align: center"><form action="{{route('eliminarusario',$user)}}" method="post">
+                            @csrf @method('DELETE')
+                            <input type="submit" class="btn btn-outline-danger" value="Eliminar">
+                        </form></td>
+                    </tr>
+                @endif
+            
             @endforeach
         </tbody>
       </table>

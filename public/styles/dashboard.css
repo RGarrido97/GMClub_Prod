@@ -135,7 +135,8 @@ h1, .h1 {
 }
 
 .dashboard-nav {
-    min-width: 238px;
+    min-width: 290px;
+    max-width: 290px;
     position: fixed;
     left: 0;
     top: 0;
@@ -150,7 +151,7 @@ h1, .h1 {
 
 .dashboard-nav header {
     min-height: 84px;
-    padding: 8px 27px;
+    padding: 8px 2px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -375,7 +376,7 @@ h1, .h1 {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 80;
 }
 
 .nav-item-divider {
@@ -387,7 +388,7 @@ h1, .h1 {
 
 @media (min-width: 992px) {
     .dashboard-app {
-        margin-left: 238px;
+        margin-left: 290px;
     }
 
     .dashboard-compact .dashboard-app {
@@ -410,7 +411,7 @@ h1, .h1 {
         right: 0;
         left: 0;
         bottom: 0;
-        z-index: 1070;
+        z-index: 99;
     }
 
     .dashboard-nav.mobile-show {
@@ -429,7 +430,7 @@ h1, .h1 {
 
 @media (min-width: 992px) {
     .dashboard-toolbar {
-        left: 238px;
+        left: 290px;
     }
 
     .dashboard-compact .dashboard-toolbar {

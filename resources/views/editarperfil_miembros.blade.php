@@ -26,7 +26,7 @@
                         <div class="row mb-3">
                             <label for="rol" class="col-md-4 col-form-label text-md-end">Rol:</label>
                             <div class="col-md-6">
-                                 <select name="rol" id="rol" class="form-control">
+                                 <select name="rol" id="rol" class="form-control" disabled>
                                     <option {{"Presidente"==$usuario->rol ? "selected='true'" : ''}} value="Presidente">Presidente</option>
                                     <option {{"Secretario"==$usuario->rol ? "selected='true'" : ''}} value="Secretario">Secretario</option>
                                     <option {{"Tesorero"==$usuario->rol ? "selected='true'" : ''}} value="Tesorero">Tesorero</option>

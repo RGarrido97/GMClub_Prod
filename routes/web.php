@@ -38,3 +38,10 @@ Route::get('/correointerno', [InicioController::class, 'correointerno'])->name('
 Route::get('/crearentrada', [InicioController::class, 'crearentrada'])->name('crearentrada');
 //subirpublicacion
 Route::post('/subirpublicacion', [InicioController::class, 'subirpublicacion'])->name('subirpublicacion');
+//blogentrenador
+Route::get('/blogentrenador', [InicioController::class, 'blogentrenador'])->name('blogentrenador');
+//crearentradamister
+Route::post('/crearentradamister', [InicioController::class, 'crearentradamister'])->name('crearentradamister');
+//crearentrenador
+Route::get('/crearentrenador', [InicioController::class, 'crearentrenador'])->name('crearentrenador');
+

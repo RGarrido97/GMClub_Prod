@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 @extends('plantilla')
 
 @section('header')
-    <h1>Foro Junta</h1>
+    <h1>Foro Entrenadores</h1>
 @endsection
+
 @section('content')
+    
     
     <a href="{{route('crearentrada')}}"><button type="button" class="btn btn-outline-success">Nueva Entrada</button></a>
     
