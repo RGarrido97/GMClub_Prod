@@ -119,23 +119,9 @@ class InicioController extends Controller
             'id_club'  => User::find(Auth::id())->id_club,
             'titulo'   => $request->titulo,
             'contenido' =>$request->comentarios,
-            'tipo' =>'junta'
+            'tipo' => $request->blog
          ]);
-        return route('correointerno');
-    }
-
-    //crearentradamister
-    public function crearentradamister(Request $request){
-
-
-        $add = Blog::create([
-            'id_user' => User::find(Auth::id())->id,
-            'id_club'  => User::find(Auth::id())->id_club,
-            'titulo'   => $request->titulo,
-            'contenido' =>$request->comentarios,
-            'tipo' =>'entrenador'
-         ]);
-        return route('blogentrenador');
+         return back();
     }
 
     public function editar_usuario(User $user){
