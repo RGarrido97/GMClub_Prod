@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Auth;
         @if (Auth::user()->rol=="Presidente" || Auth::user()->rol=="Secretario" || Auth::user()->rol=="Tesorero" || Auth::user()->rol=="Vocal")
             <div class="mb-3">
                 <label for="" class="form-label">Blog de Destino:</label>
-                <select class="form-control" name="blog" id="" disabled>
+                <select class="form-control" name="blog" id="">
                 <option value="junta">Junta</option>
                 </select>
             </div>
@@ -43,7 +43,7 @@ use Illuminate\Support\Facades\Auth;
         @if (Auth::user()->rol=="Coordinador" || Auth::user()->rol=="Entrenador")
             <div class="mb-3">
                 <label for="" class="form-label">Blog de Destino:</label>
-                <select class="form-control" name="blog" id="" disabled>
+                <select class="form-control" name="blog" id="">
                 <option value="entrenador">Entrenadores</option>
                 </select>
             </div>

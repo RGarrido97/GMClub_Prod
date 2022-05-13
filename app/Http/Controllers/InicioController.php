@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Blog;
+use App\Models\Equipo;
+
 
 use config\session;
 
@@ -80,6 +82,21 @@ class InicioController extends Controller
         return back();
     }
 
+
+    public function presidente(Request $request){
+        $pswd = Hash::make($request->password);
+        $usuario=User::find(Auth::id());
+        $club_nuevo = new User;
+        $club_nuevo ->name = $request->name;
+        $club_nuevo ->apellidos = $request->apellido;
+        $club_nuevo ->rol = $request->rol;
+        $club_nuevo ->email = $request->email;
+        $club_nuevo ->password = $pswd;
+
+        $club_nuevo -> save();
+        return back();
+    }
+
     public function eliminarusario(User $user){
         // dd($user);
         $categoria2 = User::find($user);
@@ -113,7 +130,6 @@ class InicioController extends Controller
 
     public function subirpublicacion(Request $request){
 
-
         $add = Blog::create([
             'id_user' => User::find(Auth::id())->id,
             'id_club'  => User::find(Auth::id())->id_club,
@@ -137,5 +153,27 @@ class InicioController extends Controller
         $a=$usuario->id_club;
         $id=User::find(Auth::id())->where('id_club','=',$a)->where('rol','=','Entrenador')->get();
         return view('crearentrenador', compact('id'));
+    }
+
+    //equipos
+    public function equipos(){
+        $usuario=User::find(Auth::id());
+        $a=$usuario->id_club;
+        $id=User::find(Auth::id())->where('id_club','=',$a)->where('rol','=','Entrenador')->get();
+        $as=Equipo::where('id_club','=',$a)->get();
+        return view('equipos', compact('id','as'));
+    }
+
+    //subirequipo
+    public function subirequipo(Request $request){
+
+        $add = Equipo::create([
+            'id_club'  => User::find(Auth::id())->id_club,
+            'id_entrenador'   => $request->id_entrenador,
+            'categoria' =>$request->categoria,
+            'letra' => $request->letra,
+            'division' => $request->division,
+         ]);
+         return back();
     }
 }

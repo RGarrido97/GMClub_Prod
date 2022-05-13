@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Auth::routes();
+
 Route::get('/', [InicioController::class, 'index'])->name('inico');
 Route::get('/home', [InicioController::class, 'home'])->name('home');
 Route::post('/crear_club', [ClubController::class, 'crear_club'])->name('crear_club');
@@ -42,5 +43,9 @@ Route::post('/subirpublicacion', [InicioController::class, 'subirpublicacion'])-
 Route::get('/blogentrenador', [InicioController::class, 'blogentrenador'])->name('blogentrenador');
 //crearentrenador
 Route::get('/crearentrenador', [InicioController::class, 'crearentrenador'])->name('crearentrenador');
-
-
+//equipos
+Route::get('/equipos', [InicioController::class, 'equipos'])->name('equipos');
+//subirequipo
+Route::post('/subirequipo', [InicioController::class, 'subirequipo'])->name('subirequipo');
+//presidente
+Route::post('/presidente', [InicioController::class, 'presidente'])->name('presidente');

@@ -45,7 +45,7 @@
             <div class="bg-circle-4 bg-circle"></div>
         </header>
         <!-- Content section 1-->
-        <section id="scroll" style="background-color: rgb(209, 208, 208)">
+        <section id="scroll" style="background-color: #44E22F">
             <div class="container px-5" >
                 <div class="row gx-5 align-items-center">
                     <div class="col-lg-6 order-lg-2">
@@ -77,7 +77,7 @@
             </div>
         </section>
         <!-- Content section 3-->
-        <section style="background-color: rgb(209, 208, 208)">
+        <section style="background-color: #44E22F">
             <div class="container px-5" >
                 <div class="row gx-5 align-items-center" >
                     <div class="col-lg-6 order-lg-2">
