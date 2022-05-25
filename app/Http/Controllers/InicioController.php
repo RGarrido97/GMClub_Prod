@@ -22,6 +22,11 @@ class InicioController extends Controller
         return view('welcome');
     }
 
+    public function calendario()
+    {
+        return view('calendario');
+    }
+
     public function home()
     {
         if (Auth::user()) {
@@ -52,11 +57,29 @@ class InicioController extends Controller
             'name' => request('name'),
             'apellidos' => request('apellido'),
             'rol' => request('rol'),
-            'email' => request('email'),
             $code = request('password'),
             'password' => Hash::make($code),
         ]);
-        return InicioController::editarperfil();  
+        return view('home');  
+    }
+
+    public function actualizarperfilmiembros(User $user){
+        $user->update([
+            'name' => request('name'),
+            'apellidos' => request('apellido'),
+            'rol' => request('rol'),
+            $code = request('password'),
+            'password' => Hash::make($code),
+        ]);
+        return view('home');  
+    }
+
+    public function editar_usuario(User $user){
+
+        return view('editarperfil_miembros', [
+            'usuario' => $user
+        ]);
+
     }
 
     public function crearjunta(){
@@ -121,6 +144,7 @@ class InicioController extends Controller
     static function devolverUser($a){
         return User::find($a)->name;
     }
+    
     static function devolverRol($a){
         return User::find($a)->rol;
     }
@@ -140,13 +164,7 @@ class InicioController extends Controller
          return back();
     }
 
-    public function editar_usuario(User $user){
-
-        return view('editarperfil_miembros', [
-            'usuario' => $user
-        ]);
-
-    }
+    
     //crearentrenador
     public function crearentrenador(){
         $usuario=User::find(Auth::id());

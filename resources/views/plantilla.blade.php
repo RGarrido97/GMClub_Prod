@@ -50,18 +50,18 @@
 
                         @if (Auth::user()->rol=="Presidente")
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Crear Miembros</a>
-                            <a href="{{route('correointerno')}}" class="dashboard-nav-item">Calendario</a>
+                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario</a>
                             <a href="{{route('correointerno')}}" class="dashboard-nav-item">Foro Junta</a>
                         @endif
 
                         @if (Auth::user()->rol=="Secretario" || Auth::user()->rol=="Tesorero")
-                            <a href="{{route('correointerno')}}" class="dashboard-nav-item">Calendario</a>
+                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario</a>
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Gestón Economica</a>
                             <a href="{{route('correointerno')}}" class="dashboard-nav-item">Foro Junta</a>
                         @endif
 
                         @if (Auth::user()->rol=="Vocal")
-                            <a href="{{route('correointerno')}}" class="dashboard-nav-item">Calendario</a>
+                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario</a>
                             <a href="{{route('correointerno')}}" class="dashboard-nav-item">Foro Junta</a>
                         @endif
 
@@ -69,7 +69,7 @@
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Control Assistencia</a>
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Crear Coordinadores</a>
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario de Partidos</a>
-                            <a href="{{route('correointerno')}}" class="dashboard-nav-item">Calendario de Reuniones</a>
+                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario de Reuniones</a>
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Estadisticas Jugadores</a>
                             <a href="{{route('blogentrenador')}}" class="dashboard-nav-item">Foro Entrenadores</a>
                             <a href="{{route('correointerno')}}" class="dashboard-nav-item">Foro Junta</a>
@@ -89,9 +89,10 @@
                         @endif 
 
                         @if (Auth::user()->rol=="Entrenador")
+                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario de Partidos</a>
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Control Asistencia</a>
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Crear Jugadores</a>
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Estadisticas Jugadores</a>
+                            <a href="{{route('crearjugadores')}}" class="dashboard-nav-item">Crear Jugadores</a>
+                            <a href="{{route('estadisticadejugadores')}}" class="dashboard-nav-item">Estadisticas Jugadores</a>
                             <a href="{{route('blogentrenador')}}" class="dashboard-nav-item">Foro Entrenadores</a>
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Generar plantillas</a>
                             <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Visualizar Horarios</a>

@@ -17,12 +17,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_equipo');
             $table->foreign('id_equipo')->references('id')->on('equipos')->onDelete('cascade');
+            $table->foreignId('id_entrenador');
+            $table->foreign('id_entrenador')->references('id')->on('users');
             $table->string('nombre');
             $table->string('apellidos');
-            $table->integer('goles');
-            $table->integer('asistencias');
-            $table->integer('ta');
-            $table->integer('tr');
+            $table->integer('goles')->default(0);
+            $table->integer('asistencias')->default(0);
+            $table->integer('ta')->default(0);
+            $table->integer('tr')->default(0);
             $table->timestamps();
         });
     }

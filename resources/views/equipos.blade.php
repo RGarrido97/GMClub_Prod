@@ -62,11 +62,26 @@ use Illuminate\Support\Facades\Auth;
         <input type="submit" value="Crear Equipo">
     </form>
     <table>
+        <tr>
+            <td>categoria</td>
+            <td>letra</td>
+            <td>division</td>
+            <td>Entrenador</td>
+            <td>Editar</td>
+            <td>Eliminar</td>
+        </tr>
         @foreach ($as as $asas)
-            
-        @endforeach
         <tr>
             <td>{{$asas->categoria}}</td>
+            <td>{{$asas->letra}}</td>
+            <td>{{$asas->division}}</td>
+            <td>{{InicioController::devolverUser($asas->id_entrenador)}}</td>
+            <td style="text-align: center"><a href="{{route('editar_equipo',$asas)}}" class="btn btn-outline-success">Editar</a></td>
+            <td style="text-align: center"><form action="{{route('eliminar_equipo',$asas)}}" method="post">
+                @csrf @method('DELETE')
+                <input type="submit" class="btn btn-outline-danger" value="Eliminar">
+            </form></td>
         </tr>
+        @endforeach
     </table>
 @endsection

@@ -29,14 +29,8 @@
             <div class="row mb-3">
                 <label for="rol" class="col-md-4 col-form-label text-md-end">Rol:</label>
                 <div class="col-md-6">
-                        <select name="rol" id="rol" class="form-control" disabled>
-                        <option {{"Presidente"==$usuario->rol ? "selected='true'" : ''}} value="Presidente">Presidente</option>
-                        <option {{"Secretario"==$usuario->rol ? "selected='true'" : ''}} value="Secretario">Secretario</option>
-                        <option {{"Tesorero"==$usuario->rol ? "selected='true'" : ''}} value="Tesorero">Tesorero</option>
-                        <option {{"Vocal"==$usuario->rol ? "selected='true'" : ''}} value="Vocal">Vocal</option>
-                        <option {{"Director Deportivo"==$usuario->rol ? "selected='true'" : ''}} value="Director Deportivo">Director Deportivo</option>
-                        <option {{"Coordinador"==$usuario->rol ? "selected='true'" : ''}}value="Coordinador">Coordinador</option>
-                        <option {{'Entrenador'==$usuario->rol ? "selected='true'" : ''}} value="Entrenador">Entrenador</option>
+                    <select name="rol" id="rol" class="form-control">
+                        <option value="{{ $usuario->rol }}">{{ $usuario->rol }}</option>
                     </select>
                 </div>
                 
@@ -47,7 +41,7 @@
                 <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Correo Electrónico') }}</label>
 
                 <div class="col-md-6">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$usuario->email}}" required autocomplete="email">
+                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$usuario->email}}" required disabled autocomplete="email">
 
                     @error('email')
                         <span class="invalid-feedback" role="alert">

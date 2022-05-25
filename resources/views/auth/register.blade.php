@@ -38,12 +38,6 @@
                             <div class="col-md-6">
                                 <select name="rol" id="rol" class="form-control">
                                     <option value="Presidente">Presidente</option>
-                                    <option value="Secretario">Secretario</option>
-                                    <option value="Tesorero">Tesorero</option>
-                                    <option value="Vocal">Vocal</option>
-                                    <option value="Director Deportivo">Director Deportivo</option>
-                                    <option value="Coordinador">Coordinador</option>
-                                    <option value="Entrenador">Entrenador</option>
                                 </select>
                             </div>
                             

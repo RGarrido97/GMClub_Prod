@@ -26,7 +26,6 @@
             <label for="rol" class="col-md-4 col-form-label text-md-end">Rol:</label>
             <div class="col-md-6">
                     <select name="rol" id="rol" class="form-control">
-                    <option  value="Presidente">Presidente</option>
                     <option  value="Secretario">Secretario</option>
                     <option  value="Tesorero">Tesorero</option>
                     <option  value="Vocal">Vocal</option>
@@ -85,7 +84,7 @@
     <br>
     <h1>Miembros del Club</h1>
     <br>
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col" style="text-align: center">Nombre</th>
@@ -109,7 +108,7 @@
                         <td style="text-align: center"></td>
                     </tr>
                 @else
-                    <tr>
+                    <tr></tr>
                         <td style="text-align: center">{{$user->name}}</td> 
                         <td style="text-align: center">{{$user->apellidos}}</td>
                         <td style="text-align: center">{{$user->email}}</td>
