@@ -10,9 +10,13 @@ use Illuminate\Support\Facades\Auth;
 @endsection
 
 @section('content')
+<div class="jumbotron" style="text-align:left; width: 50%; margin-left: auto; margin-right: auto;">
+
     <form action="{{route('subirequipo')}}" method="post">
         @csrf
-        <select name="categoria" id="categoria" class="form-control">
+        <div class="mb-3">
+          <label for="" class="form-label">Seleccionar Categoría:</label>
+          <select name="categoria" id="categoria" class="form-control">
             <option  value="Escuela">Escuela</option>
             <option  value="Prebenjamín">Prebenjamín</option>
             <option  value="Benjamín">Benjamín</option>
@@ -23,8 +27,10 @@ use Illuminate\Support\Facades\Auth;
             <option  value="Prebenjamín">Prebenjamín</option>
             <option  value="Amateur">Amateur</option>
         </select>
-        
-        <select name="letra" id="letra" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Letra identificativa del Equipo:</label>
+          <select name="letra" id="letra" class="form-control">
             <option  value="A">A</option>
             <option  value="B">B</option>
             <option  value="C">C</option>
@@ -51,32 +57,62 @@ use Illuminate\Support\Facades\Auth;
             <option  value="X">X</option>
             <option  value="Y">Y</option>
             <option  value="Z">Z</option>
-
         </select>
-        <input type="text" name="division" id="">
-        <select name="id_entrenador" id="">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">División de la Competición:</label>
+          <input type="text" name="division" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Selecciona un Entrenador:</label>
+          <select name="id_entrenador" class="form-control" id="">
             @foreach ($id as $user)
-            <option  value="{{$user->id}}">{{$user->name}}</option>
+            <option  value="{{$user->id}}">{{$user->name}} {{$user->apellidos}}</option>
             @endforeach  
         </select>
-        <input type="submit" value="Crear Equipo">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Selecciona Modalidad:</label>
+          <select name="tipo" class="form-control" id="">
+            <option  value="f7">F7</option>
+            <option  value="f11">F11</option>
+        </select>
+        </div>
+        
+        <input type="submit" class="btn btn-outline-success" value="Crear Equipo">
     </form>
-    <table>
-        <tr>
-            <td>categoria</td>
-            <td>letra</td>
-            <td>division</td>
-            <td>Entrenador</td>
-            <td>Editar</td>
-            <td>Eliminar</td>
+</div>
+    <table class="table">
+        <tr style="text-align: center">
+            <th>Categoría</th>
+            <th>Letra</th>
+            <th>División</th>
+            <th>Entrenador</th>
+            <th>Tipo</th>
+            <th>Actualizar</th>
+            <th>Eliminar</th>
         </tr>
         @foreach ($as as $asas)
         <tr>
+            <form action="{{route('actualizar_datos_equipo',$asas)}}" method="post">
+              @csrf 
+              @method('PATCH')
             <td>{{$asas->categoria}}</td>
             <td>{{$asas->letra}}</td>
-            <td>{{$asas->division}}</td>
-            <td>{{InicioController::devolverUser($asas->id_entrenador)}}</td>
-            <td style="text-align: center"><a href="{{route('editar_equipo',$asas)}}" class="btn btn-outline-success">Editar</a></td>
+            <td>
+              <input type="text" class="form-control" name="division_mod" id="" value="{{$asas->division}} ">
+            </td>
+            <td>
+              <select name="id_entrenador_mod" class="form-control" id="">
+                <option value="{{$asas->id_entrenador}}">{{InicioController::devolverUser($asas->id_entrenador)}}</option>
+                @foreach ($id as $user)
+                <option  value="{{$user->id}}">{{$user->name}} {{$user->apellidos}}</option>
+                @endforeach  
+            </select>
+            </td>
+            <td>{{$asas->tipo}}</td>
+            <td style="text-align: center"><input type="submit" class="btn btn-outline-warning" value="Actualizar"></td>
+        </form>
             <td style="text-align: center"><form action="{{route('eliminar_equipo',$asas)}}" method="post">
                 @csrf @method('DELETE')
                 <input type="submit" class="btn btn-outline-danger" value="Eliminar">

@@ -20,6 +20,8 @@ nav {
     display: block;
 }
 
+.noTiene{display:none}
+
 body {
     margin: 0;
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -436,4 +438,30 @@ h1, .h1 {
     .dashboard-compact .dashboard-toolbar {
         left: 0;
     }
+}
+.desactivar{
+    display: none;
+}
+
+.dataTables_paginate a{
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dataTables_paginate a:hover{
+    margin-left: 10px;
+    cursor:pointer;
+}
+
+.dataTables_info{
+    display: none;
+}
+
+.dataTables_length{
+    display: none;
+}
+
+.dataTables_filter input{
+    margin-left: 10px;
 }

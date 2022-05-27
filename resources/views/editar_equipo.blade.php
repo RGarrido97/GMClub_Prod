@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 @endsection
 
 @section('content')
-    <form action="{{route('subirequipo')}}" method="post">
+    <form action="{{route('actequipo')}}" method="post">
         @csrf
         <select name="categoria" id="categoria" class="form-control">
             @foreach ($equipos as $e)
@@ -29,6 +29,12 @@ use Illuminate\Support\Facades\Auth;
             <option  value="{{$user->id}}">{{$user->name}}</option>
             @endforeach  
         </select>
-        <input type="submit" value="Crear Equipo">
+        <select name="tipo" id="">
+            
+            <option  value="f7">F7</option>
+            <option  value="f11">F11</option>
+          
+        </select>
+        <input type="submit" value="Actualizar Equipo">
     </form>
 @endsection

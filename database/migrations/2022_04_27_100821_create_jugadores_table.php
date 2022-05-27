@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('jugadores', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('id_club');
+            $table->foreign('id_club')->references('id')->on('clubs')->onDelete('cascade');
             $table->foreignId('id_equipo');
             $table->foreign('id_equipo')->references('id')->on('equipos')->onDelete('cascade');
             $table->foreignId('id_entrenador');

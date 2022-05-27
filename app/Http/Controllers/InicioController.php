@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Blog;
 use App\Models\Equipo;
+use App\Models\Horario;
+use App\Models\Club;
 
 
 use config\session;
@@ -18,12 +20,14 @@ class InicioController extends Controller
 {
     //
     public function index()
-    {
+    {   
+        
         return view('welcome');
     }
 
     public function calendario()
-    {
+    {   
+
         return view('calendario');
     }
 
@@ -35,7 +39,11 @@ class InicioController extends Controller
             if($usuarioidclub == null){
                 return view('form_club' ); // Añadir route con nombre crea_club
             }else {
-                return view('home');   
+                $usuario=User::find(Auth::id());
+                $a=$usuario->id_club;
+                // print($a);
+                $info=Club::where('id','=',$a)->get();
+                return view('home', compact('info'));   
             }
         }else{
             return view('welcome');
@@ -51,6 +59,27 @@ class InicioController extends Controller
         }
         
     }
+
+    public function crearhorario(){
+        $usuario=User::find(Auth::id());
+        $a=$usuario->id_club;
+        // print($a);
+        $f7=Equipo::where('id_club','=',$a)->where('tipo','=','f7')->get();
+        $f11=Equipo::where('id_club','=',$a)->where('tipo','=','f11')->get();
+        $datos=Horario::where('id_club','=',$a)->get();
+            return view('creahorario', compact('f7','f11','datos'));
+        
+    }
+
+    //crearcoordinador
+    public function crearcoordinador()
+    {
+        $usuario=User::find(Auth::id());
+        $a=$usuario->id_club;
+        // print($a);
+        $id=User::where('id_club','=',$a)->where('rol','=','coordinador')->get();
+        return view('crearcoordinador', compact('id'));   
+    }       
 
     public function actualizarperfil(){
         User::find(Auth::id())->update([
@@ -117,7 +146,7 @@ class InicioController extends Controller
         $club_nuevo ->password = $pswd;
 
         $club_nuevo -> save();
-        return back();
+        return view('auth.login');
     }
 
     public function eliminarusario(User $user){
@@ -142,7 +171,9 @@ class InicioController extends Controller
     }
 
     static function devolverUser($a){
-        return User::find($a)->name;
+
+        $nombre_completo = User::find($a)->name.' '.User::find($a)->apellidos;
+        return $nombre_completo;
     }
     
     static function devolverRol($a){
@@ -178,7 +209,7 @@ class InicioController extends Controller
         $usuario=User::find(Auth::id());
         $a=$usuario->id_club;
         $id=User::find(Auth::id())->where('id_club','=',$a)->where('rol','=','Entrenador')->get();
-        $as=Equipo::where('id_club','=',$a)->get();
+        $as=Equipo::where('id_club','=',$a)->OrderBy('categoria','asc')->get();
         return view('equipos', compact('id','as'));
     }
 
@@ -191,7 +222,14 @@ class InicioController extends Controller
             'categoria' =>$request->categoria,
             'letra' => $request->letra,
             'division' => $request->division,
+            'tipo' => $request->tipo,
          ]);
          return back();
+    }
+
+    public function imprimir(){
+        
+        
+
     }
 }

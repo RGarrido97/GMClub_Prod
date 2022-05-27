@@ -13,16 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('equipos', function (Blueprint $table) {
+        Schema::create('horarios', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_club');
             $table->foreign('id_club')->references('id')->on('clubs')->onDelete('cascade');
-            $table->foreignId('id_entrenador');
-            $table->foreign('id_entrenador')->references('id')->on('users')->onDelete('cascade');
-            $table->string('categoria');
-            $table->string('letra');
-            $table->string('division')->nullable();
+            $table->string('dia');
+            $table->integer('franja');
+            $table->string('hora_inicio');
+            $table->string('hora_fin');
             $table->string('tipo');
+            $table->string('campo1')->nullable();
+            $table->string('campo2')->nullable();
+            $table->string('campo3')->nullable();
+            $table->string('campo4')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipos');
+        Schema::dropIfExists('horarios');
     }
 };

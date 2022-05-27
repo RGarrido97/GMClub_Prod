@@ -20,6 +20,7 @@ use App\Http\Controllers\ControllerEvent;
 Auth::routes();
 
 Route::get('/', [InicioController::class, 'index'])->name('inico');
+Route::get('/gestion_eco', [PagosController::class, 'index'])->name('gestion_eco');
 Route::get('/home', [InicioController::class, 'home'])->name('home');
 Route::post('/crear_club', [ClubController::class, 'crear_club'])->name('crear_club');
 // editarperfil
@@ -62,12 +63,53 @@ Route::get('/crearjugadores', [JugadoresController::class, 'crearjugadores'])->n
 Route::post('/subirjugadores', [JugadoresController::class, 'subirjugadores'])->name('subirjugadores');
 //estadisticadejugadores
 Route::get('/estadisticadejugadores', [JugadoresController::class, 'estadisticadejugadores'])->name('estadisticadejugadores');
+//estadisticadejugadores
+Route::get('/estadisticadejugadoresclub', [JugadoresController::class, 'estadisticadejugadoresclub'])->name('estadisticadejugadoresclub');
 //sumargol
 Route::patch('/sumargol/{user}', [JugadoresController::class, 'sumargol'])->name('sumargol');
-//restargol
-Route::patch('/restargol/{user}', [JugadoresController::class, 'restargol'])->name('restargol');
-//editar_jugador
-Route::get('/editar_jugador/{user}', [JugadoresController::class, 'editar_jugador'])->name('editar_jugador');
+//restargoles
+Route::patch('/restargoles/{user}', [JugadoresController::class, 'restargoles'])->name('restargoles');
 
+//sumarasis
+Route::patch('/sumarasis/{user}', [JugadoresController::class, 'sumarasis'])->name('sumarasis');
+//resasis
+Route::patch('/resasis/{user}', [JugadoresController::class, 'resasis'])->name('resasis');
+//sumaram
+Route::patch('/sumaram/{user}', [JugadoresController::class, 'sumaram'])->name('sumaram');
+//resam
+Route::patch('/resam/{user}', [JugadoresController::class, 'resam'])->name('resam');
+//sumarroj
+Route::patch('/sumarroj/{user}', [JugadoresController::class, 'sumarroj'])->name('sumarroj');
+//resroj
+Route::patch('/resroj/{user}', [JugadoresController::class, 'resroj'])->name('resroj');
 // eliminarjugador
 Route::delete('/eliminarjugador/{user}', [JugadoresController::class, 'eliminarjugador'])->name('eliminarjugador');
+//crearhorario
+Route::get('/crearhorario', [InicioController::class, 'crearhorario'])->name('crearhorario');
+//actequipo
+Route::patch('/actequipo', [EquipoController::class, 'actequipo'])->name('crearhorarioactequipo');
+
+// Actualizar Tipo Pago
+Route::patch('/actualizar_pago/{item}', [PagosController::class, 'actualizar_pago'])->name('actualizar_pago');
+
+// Actualizar Jugador
+Route::patch('/actualizar_jugador/{user}', [JugadoresController::class, 'actualizar_jugador'])->name('actualizar_jugador');
+
+// Actualizar Datos Equipo
+Route::patch('/actualizar_datos_equipo/{user}', [EquipoController::class, 'actualizar_datos_equipo'])->name('actualizar_datos_equipo');
+
+//subirfranja
+Route::post('/subirfranja', [HorarioController::class, 'subirfranja'])->name('subirfranja');
+//eliminarhora
+Route::delete('/eliminarhora/{user}', [HorarioController::class, 'eliminarhora'])->name('eliminarhora');
+//horarios
+Route::get('/horarios', [HorarioController::class, 'horarios'])->name('horarios');
+
+
+Route::get('/verplantilla', [EquipoController::class, 'verplantilla'])->name('verplantilla');
+Route::get('/verplantilladet/{equipo}', [JugadoresController::class, 'verplantilladet'])->name('verplantilladet');
+//crearcoordinador
+Route::get('/crearcoordinador', [InicioController::class, 'crearcoordinador'])->name('crearcoordinador');
+
+// GENERAR PDF
+Route::get('/generarpdf', [InicioController::class, 'imprimir'])->name('verplantilla');

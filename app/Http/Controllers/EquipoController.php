@@ -23,4 +23,31 @@ class EquipoController extends Controller
         $equipos = Equipo::where('id_club','=',$a)->get();
         return view('editar_equipo', compact('entrenadoresClub','equipos'));
     }
+
+    public function actequipo(){
+        Equipo::find()->update([
+            'name' => request('name'),
+            'apellidos' => request('apellido'),
+            'rol' => request('rol'),
+            $code = request('password'),
+            'password' => Hash::make($code),
+        ]);
+        return back(); 
+    }
+
+    public function verplantilla(){
+        $user=User::find(Auth::id());
+        $a=$user->id_club;
+        
+        $equipos = Equipo::where('id_club','=',$a)->get();
+        return view('verplantilla', compact('equipos'));
+    }
+
+    public function actualizar_datos_equipo(Equipo $user){
+        $user->update([
+            'division' => request('division_mod'),
+            'id_entrenador' => request('id_entrenador_mod')
+        ]);
+        return back();
+    }
 }

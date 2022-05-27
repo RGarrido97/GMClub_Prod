@@ -10,5 +10,5 @@ class Jugadores extends Model
     use HasFactory;
 
     protected $table = 'jugadores';
-    protected $fillable = ['nombre','id_equipo','id_entrenador','apellidos','goles','asistencias','ta','tr'];
+    protected $fillable = ['id_club','nombre','id_equipo','id_entrenador','apellidos','goles','asistencias','ta','tr'];
 }
