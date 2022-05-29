@@ -30,7 +30,6 @@
                     <option  value="Tesorero">Tesorero</option>
                     <option  value="Vocal">Vocal</option>
                     <option  value="Director Deportivo">Director Deportivo</option>
-                    <option value="Coordinador">Coordinador</option>
                 </select>
             </div>
             

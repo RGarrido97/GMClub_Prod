@@ -32,7 +32,7 @@ class JugadoresController extends Controller
     public function verplantilladet(Equipo $equipo){
         $a=$equipo->id;
         $u=Jugadores::where('id_equipo','=',$a)->OrderBy('nombre', 'asc')->get();
-        return view('verplantilladet', compact('u'));
+        return view('verplantilladet', compact('u', 'equipo'));
     }
 
 
@@ -142,7 +142,8 @@ class JugadoresController extends Controller
          $resultado = Jugadores::orderBy('id', 'desc')->take(1)->get();
 
          $add_pago = Pagos::create([
-            'id_jugador' => $resultado[0]->id
+            'id_jugador' => $resultado[0]->id,
+            'id_club' => $b,
          ]);
          return back();
     }
@@ -150,6 +151,15 @@ class JugadoresController extends Controller
     static function devolverEquipo($a){
         $c = Equipo::find($a)->categoria;
         $d = Equipo::find($a)->letra;
+        $da = $c.' '.$d;
+        return($da);
+
+    }
+
+    static function devolverCategoria($a){
+        $z = Jugadores::find($a)->id_equipo;
+        $c = Equipo::find($z)->categoria;
+        $d = Equipo::find($z)->letra;
         $da = $c.' '.$d;
         return($da);
 

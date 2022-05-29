@@ -37,6 +37,6 @@ class ClubController extends Controller
             ]);
         }
 
-        return view('home');
+        return view('welcome');
     }
 }

@@ -111,5 +111,8 @@ Route::get('/verplantilladet/{equipo}', [JugadoresController::class, 'verplantil
 //crearcoordinador
 Route::get('/crearcoordinador', [InicioController::class, 'crearcoordinador'])->name('crearcoordinador');
 
-// GENERAR PDF
-Route::get('/generarpdf', [InicioController::class, 'imprimir'])->name('verplantilla');
+// GENERAR RECIBO
+Route::patch('/generar_recibo/{user}', [PagosController::class, 'generar_recibo'])->name('generar_recibo');
+
+// NUEVO PAGO
+Route::get('/nuevo_pago/{pago}', [PagosController::class, 'nuevo_pago'])->name('nuevo_pago');

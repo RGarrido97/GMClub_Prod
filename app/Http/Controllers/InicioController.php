@@ -11,6 +11,7 @@ use App\Models\Blog;
 use App\Models\Equipo;
 use App\Models\Horario;
 use App\Models\Club;
+use App\Models\Jugadores;
 
 
 use config\session;
@@ -43,7 +44,11 @@ class InicioController extends Controller
                 $a=$usuario->id_club;
                 // print($a);
                 $info=Club::where('id','=',$a)->get();
-                return view('home', compact('info'));   
+                $max_gol = Jugadores::orderBy('goles', 'desc')->take(3)->get();
+                $max_asis = Jugadores::orderBy('asistencias', 'desc')->take(3)->get();
+                $max_ta = Jugadores::orderBy('ta', 'desc')->take(3)->get();
+                $max_tr = Jugadores::orderBy('tr', 'desc')->take(3)->get();
+                return view('home', compact('info','max_gol','max_asis','max_ta','max_tr'));   
             }
         }else{
             return view('welcome');

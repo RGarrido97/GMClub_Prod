@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 <table class="table table-hover" id="tabla_pagos">
     <thead>
-        <tr>
+        <tr style="text-align: center">
           <th scope="col">Nombre</th>
           <th scope="col" >Preinscripción</th>
           <th scope="col">Tipo Pago</th>
@@ -30,6 +30,7 @@ use Illuminate\Support\Facades\Auth;
           <th scope="col">Pago 8</th>
           <th scope="col">Pago 9</th>
           <th scope="col">Pago 10</th>
+          <th scope="col">Ingresos</th>
           <th scope="col">Actualizar</th>
         </tr>
       </thead>
@@ -42,7 +43,7 @@ use Illuminate\Support\Facades\Auth;
                 <form action="{{route('actualizar_pago',$pago)}}" method="post">
                     @csrf 
                     @method('PATCH')
-                    <td style="width: 120px;">{{JugadoresController::devolverJugador($pago->id_jugador)}}</td>
+                    <td style="width: 200px;">{{JugadoresController::devolverJugador($pago->id_jugador)}}</td>
                     <td>{{ $pago->preinscripcion }} €</td>
                     <td style="width: 120px;">
                         <select class="form-select" name="tipopago" id="tipopago">
@@ -63,6 +64,7 @@ use Illuminate\Support\Facades\Auth;
                     <td>{{ $pago->pago8 }} €</td>
                     <td>{{ $pago->pago9 }} €</td>
                     <td>{{ $pago->pago10 }} €</td>
+                    <td style="text-align: center; width: 90px;"><a href="{{route('nuevo_pago',$pago)}}" class="btn btn-outline-success">Añadir Pago</a></td>
                     <td style="text-align: center; width: 90px;"><input name="" class="btn btn-outline-warning" id=""  type="submit" value="Actualizar"></td>
                 </form>
             </tr>
@@ -72,9 +74,5 @@ use Illuminate\Support\Facades\Auth;
    
     </tbody>
 </table>
-
-<a href="/generarpdf" class="btn btn-outline-danger"> Generar PDF</a>
-        
-      
  
 @endsection

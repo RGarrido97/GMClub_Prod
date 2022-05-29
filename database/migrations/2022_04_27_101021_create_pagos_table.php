@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('pagos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_jugador');
-            $table->foreign('id_jugador')->references('id')->on('jugadores')->onDelete('cascade');
+            $table->foreign('id_jugador')->references('id')->on('jugadores');
+            $table->foreignId('id_club');
+            $table->foreign('id_club')->references('id')->on('clubs');
             $table->integer('preinscripcion')->default(0);
             $table->integer('pago1')->default(0);
             $table->integer('pago2')->default(0);
