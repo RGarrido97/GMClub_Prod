@@ -46,31 +46,25 @@
                 <a href="{{route('home')}}" style="text-decoration: none; text-align:left" class="dashboard-nav-item"> {{ Auth::user()->name }} - {{ Auth::user()->rol }}</a>
             </header>
             <nav class="dashboard-nav-list">
-                        <a href="{{route('editarperfil')}}" class="dashboard-nav-item">Perfil</a>
+                        <a href="{{route('editarperfil')}}" class="dashboard-nav-item">Datos Personales</a>
 
                         @if (Auth::user()->rol=="Presidente")
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Crear Miembros</a>
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario</a>
+                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Crear Usuarios del Club</a>
                             <a href="{{route('correointerno')}}" class="dashboard-nav-item">Foro Junta</a>
                         @endif
 
                         @if (Auth::user()->rol=="Secretario" || Auth::user()->rol=="Tesorero")
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario</a>
-                            <a href="{{route('gestion_eco')}}" class="dashboard-nav-item">Gestón Economica</a>
+                            <a href="{{route('gestion_eco')}}" class="dashboard-nav-item">Gestor de Cobros</a>
                             <a href="{{route('correointerno')}}" class="dashboard-nav-item">Foro Junta</a>
                         @endif
 
                         @if (Auth::user()->rol=="Vocal")
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario</a>
                             <a href="{{route('correointerno')}}" class="dashboard-nav-item">Foro Junta</a>
                         @endif
 
                         @if (Auth::user()->rol=="Director Deportivo")
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Control Assistencia</a>
-                            <a href="{{route('crearcoordinador')}}" class="dashboard-nav-item">Crear Coordinadores</a>
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario de Partidos</a>
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario de Reuniones</a>
-                            <a href="{{route('estadisticadejugadoresclub')}}" class="dashboard-nav-item">Estadisticas Jugadores</a>
+                            <a href="{{route('crearcoordinador')}}" class="dashboard-nav-item">Gestionar Coordinadores</a>
+                            <a href="{{route('estadisticadejugadoresclub')}}" class="dashboard-nav-item">Estadística de Mis Plantillas</a>
                             <a href="{{route('blogentrenador')}}" class="dashboard-nav-item">Foro Entrenadores</a>
                             <a href="{{route('correointerno')}}" class="dashboard-nav-item">Foro Junta</a>
                             <a href="{{route('verplantilla')}}" class="dashboard-nav-item">Ver Plantillas</a>
@@ -79,22 +73,18 @@
                         @endif 
 
                         @if (Auth::user()->rol=="Coordinador")
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Control Asistencia</a>
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario de Partidos</a>
-                            <a href="{{route('equipos')}}" class="dashboard-nav-item">Equipos</a>
-                            <a href="{{route('estadisticadejugadoresclub')}}" class="dashboard-nav-item">Estadisticas Jugadores</a>
+                            <a href="{{route('crearentrenador')}}" class="dashboard-nav-item">Gestionar Entrenadores</a>
+                            <a href="{{route('equipos')}}" class="dashboard-nav-item">Gestionar Equipos</a>
+                            <a href="{{route('estadisticadejugadoresclub')}}" class="dashboard-nav-item">Estadística de Mis Plantillas</a>
                             <a href="{{route('blogentrenador')}}" class="dashboard-nav-item">Foro Entrenadores</a>
-                            <a href="{{route('crearentrenador')}}" class="dashboard-nav-item">Crear Entrenadores</a>
-                            <a href="{{route('crearhorario')}}" class="dashboard-nav-item">Crear horarios</a>
+                            <a href="{{route('crearhorario')}}" class="dashboard-nav-item">Gestor de Horarios</a>
                         @endif 
 
                         @if (Auth::user()->rol=="Entrenador")
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Calendario de Partidos</a>
-                            <a href="{{route('crearjunta')}}" class="dashboard-nav-item">Control Asistencia</a>
-                            <a href="{{route('crearjugadores')}}" class="dashboard-nav-item">Crear Jugadores</a>
-                            <a href="{{route('estadisticadejugadores')}}" class="dashboard-nav-item">Estadisticas Jugadores</a>
+                            <a href="{{route('crearjugadores')}}" class="dashboard-nav-item">Mis Jugadores</a>
+                            <a href="{{route('estadisticadejugadores')}}" class="dashboard-nav-item">Estadística de Mis Plantillas</a>
                             <a href="{{route('blogentrenador')}}" class="dashboard-nav-item">Foro Entrenadores</a>
-                            <a href="{{route('horarios')}}" class="dashboard-nav-item">Visualizar Horarios</a>
+                            <a href="{{route('horarios')}}" class="dashboard-nav-item">Horarios de Entrenamiento</a>
                         @endif 
                         
                                     <a class="dashboard-nav-item" href="{{ route('logout') }}"

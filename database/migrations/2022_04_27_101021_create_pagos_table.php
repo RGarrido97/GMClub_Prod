@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('id_jugador');
             $table->foreign('id_jugador')->references('id')->on('jugadores');
             $table->foreignId('id_club');
-            $table->foreign('id_club')->references('id')->on('clubs');
+            $table->foreign('id_club')->references('id')->on('clubs')->onDelete('cascade');;
             $table->integer('preinscripcion')->default(0);
             $table->integer('pago1')->default(0);
             $table->integer('pago2')->default(0);
